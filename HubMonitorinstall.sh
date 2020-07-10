@@ -43,7 +43,7 @@ sudo tar -xvzf ~/Prometheus/mongodb_exporter-0.11.0.linux-amd64.tar.gz
 
 sleep 5
 # Symbolic links mongodb_exporter to /usr/bin
-sudo ln -s ~/mongodb_exporter /usr/bin
+sudo ln -s ~/Prometheus/mongodb_exporter /usr/bin
 
 # Creates mongodb_exporter service
 cat <<'EOF4' >/etc/systemd/system/mongodb_exporter.service
