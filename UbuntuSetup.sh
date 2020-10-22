@@ -94,7 +94,7 @@ function UpdateHostsFile()
 until [[ $DbInputNumber -gt $DbTotalNumber ]]; do
     echo "Enter database $DbInputNumber, formatted ###.###.###.### dbname fullyqualifiedDBname"
     read -r database
-    sed -i -e "\$a&database" /etc/hosts
+    sed -i -e "\$a" /etc/hosts
     ((DbInputNumber+=1))
 done
 }
