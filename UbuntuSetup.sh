@@ -91,35 +91,13 @@ sudo service mongod start
 
 function UpdateHostsFile()
 {
-until [[ $DbInputNumber -gt $DbTotalNumber ]]; do
-    echo "Enter database $DbInputNumber, formatted ###.###.###.### dbname fullyqualifiedDBname"
-    read -r database
-    sed -i "\$a&database" /etc/hosts
-    ((DbInputNumber+=1))
+sudo nano /etc/hosts
 done
 }
-
-
-function GetTotalDBs()
-{
-read -r -p "Enter total number of database servers: " DbTotalNumber
-if ! [[ $DbTotalNumber =~ ^[0-9]+$ ]];  then
-   echo "error: Not a number"
-   GetTotalDBs
-elif  [[ $((DbTotalNumber%2)) -eq 0 ]]; then
-	echo "error: Mongo requires an odd number of servers"
-	GetTotalDBs
-fi
-}
-
-
-DbTotalNumber=0
-DbInputNumber=1
 
 InstallMongoDB
 ConfigureMongoDB
 ConfigureMongoDBService
 EnableMongoDB
-GetTotalDBs
 UpdateHostsFile
 StartMongoDB
