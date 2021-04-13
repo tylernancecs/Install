@@ -92,7 +92,6 @@ sudo service mongod start
 function UpdateHostsFile()
 {
 sudo nano /etc/hosts
-done
 }
 
 InstallMongoDB
