@@ -12,11 +12,11 @@ cd Prometheus
 function nodeExporter() {
 # Grabs node_exporter from Github and uncompresses it
 sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.2.0/node_exporter-1.2.0.linux-amd64.tar.gz
-sudo tar -xvzf ~/Prometheus/node_exporter-1.2.0.linux-amd64.tar.gz
+sudo tar -xvzf /node_exporter-1.2.0.linux-amd64.tar.gz
 
 sleep 5
 # Symbolic links node_exporter to /usr/bin
-sudo ln -s ~/Prometheus/node_exporter-1.2.0.linux-amd64/node_exporter /usr/bin
+sudo ln -s /node_exporter-1.2.0.linux-amd64/node_exporter /usr/bin
 
 # Creates Node_exporter service
 cat <<'EOF3' >/etc/systemd/system/node_exporter.service
@@ -39,11 +39,11 @@ sudo service node_exporter start
 function mongodbExporter() {
 #Grabs mongodb_exporter from Github and uncompresses it
 sudo wget https://github.com/percona/mongodb_exporter/releases/download/v0.20.6/mongodb_exporter-0.20.6.linux-amd64.tar.gz
-sudo tar -xvzf ~/Prometheus/mongodb_exporter-0.20.6.linux-amd64.tar.gz
+sudo tar -xvzf /mongodb_exporter-0.20.6.linux-amd64.tar.gz
 
 sleep 5
 # Symbolic links mongodb_exporter to /usr/bin
-sudo ln -s ~/Prometheus/mongodb_exporter-0.20.6.linux-amd64/mongodb_exporter /usr/bin
+sudo ln -s /mongodb_exporter-0.20.6.linux-amd64/mongodb_exporter /usr/bin
 
 # Creates mongodb_exporter service
 cat <<'EOF4' >/etc/systemd/system/mongodb_exporter.service
