@@ -9,14 +9,15 @@ cd Prometheus
 }
 
 
+
 function nodeExporter() {
 # Grabs node_exporter from Github and uncompresses it
-sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
-sudo tar -xvzf node_exporter-1.6.1.linux-amd64.tar.gz
+sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
+sudo tar -xvzf node_exporter-1.8.2.linux-amd64.tar.gz
 
 sleep 5
 # Symbolic links node_exporter to /usr/bin
-cd node_exporter-1.6.1.linux-amd64/
+cd node_exporter-1.8.2.linux-amd64/
 sudo cp node_exporter /usr/bin
 
 # Creates Node_exporter service
