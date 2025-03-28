@@ -17,8 +17,8 @@ sudo tar -xvzf node_exporter-1.9.0.linux-amd64.tar.gz
 
 sleep 5
 # Symbolic links node_exporter to /usr/bin
-cd node_exporter-1.9.0.linux-amd64/
-sudo cp node_exporter /usr/bin
+cd  node_exporter-1.9.0.linux-amd64/
+sudo cp --remove-destination node_exporter /usr/bin
 
 # Creates Node_exporter service
 cat <<'EOF3' >/etc/systemd/system/node_exporter.service
@@ -47,7 +47,7 @@ sudo tar -xvzf mongodb_exporter-0.43.1.linux-amd64.tar.gz
 sleep 5
 # Copies file to /usr/bin
 cd mongodb_exporter-0.43.1.linux-amd64
-sudo cp mongodb_exporter /usr/bin
+sudo cp --remove-destination mongodb_exporter /usr/bin
 
 # Creates mongodb_exporter service
 cat <<'EOF4' >/etc/systemd/system/mongodb_exporter.service
@@ -56,7 +56,8 @@ Description=mongodb_exporter
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mongodb_exporter
+ExecStart=/usr/bin/mongodb_exporter \
+  --mongodb.uri=mongodb://127.0.0.1:17001
 
 [Install]
 WantedBy=multi-user.target
